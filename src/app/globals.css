@@ -1,0 +1,329 @@
+@import "tailwindcss";
+
+:root {
+  /* Soft blush / feminine light */
+  --w-bg: #fff1f7;
+  --w-surface: #ffffff;
+  --w-ink: #4a1242;
+  --w-muted: #9d5b8a;
+  --w-line: #f5c6dc;
+  --w-dark: #9d174d;
+  --w-dark-soft: #be185d;
+  --w-pink: #ec4899;
+  --w-pink-bright: #f472b6;
+  --w-pink-deep: #db2777;
+  --w-coral: #fb7185;
+  --w-peach: #fda4af;
+  --w-pill: rgba(255, 255, 255, 0.28);
+  --w-glass: rgba(255, 240, 248, 0.35);
+  --w-glass-border: rgba(255, 255, 255, 0.55);
+  --w-accent-lilac: #e9d5ff;
+  --w-accent-mint: #fbcfe8;
+  --w-accent-teal: #fda4af;
+  --w-card-muted: #ffe4f1;
+  --w-nav-text: #ffffff;
+  --w-section-pad: clamp(3.5rem, 8vw, 6.5rem);
+  --testimonial-watermark: rgba(40, 20, 35, 0.08);
+
+  --bg: var(--w-bg);
+  --bg-deep: var(--w-dark);
+  --ink: var(--w-ink);
+  --muted: var(--w-muted);
+  --accent: var(--w-pink);
+  --accent-soft: var(--w-pink-bright);
+  --surface: var(--w-surface);
+  --line: var(--w-line);
+  --success: #db2777;
+}
+
+html.dark {
+  /* Plum night + neon pink accents */
+  --w-bg: #1a0814;
+  --w-surface: #2a1020;
+  --w-ink: #ffe4f1;
+  --w-muted: #e8a0c4;
+  --w-line: #5b2140;
+  --w-dark: #4a0e2e;
+  --w-dark-soft: #831843;
+  --w-pink: #f472b6;
+  --w-pink-bright: #fda4af;
+  --w-pink-deep: #fb7185;
+  --w-coral: #fb7185;
+  --w-peach: #f9a8d4;
+  --w-pill: rgba(255, 182, 213, 0.14);
+  --w-glass: rgba(74, 14, 46, 0.5);
+  --w-glass-border: rgba(253, 164, 175, 0.28);
+  --w-accent-lilac: #c084fc;
+  --w-accent-mint: #f9a8d4;
+  --w-accent-teal: #fb7185;
+  --w-card-muted: #3b1528;
+  --w-nav-text: #ffffff;
+  --testimonial-watermark: rgba(255, 228, 241, 0.1);
+  --bg: var(--w-bg);
+  --bg-deep: var(--w-dark);
+  --ink: var(--w-ink);
+  --muted: var(--w-muted);
+  --accent: var(--w-pink);
+  --accent-soft: var(--w-pink-bright);
+  --surface: var(--w-surface);
+  --line: var(--w-line);
+}
+
+@theme inline {
+  --color-w-bg: var(--w-bg);
+  --color-w-surface: var(--w-surface);
+  --color-w-ink: var(--w-ink);
+  --color-w-muted: var(--w-muted);
+  --color-w-line: var(--w-line);
+  --color-w-dark: var(--w-dark);
+  --color-w-dark-soft: var(--w-dark-soft);
+  --color-w-pink: var(--w-pink);
+  --color-w-pink-bright: var(--w-pink-bright);
+  --color-w-pink-deep: var(--w-pink-deep);
+  --color-w-coral: var(--w-coral);
+  --color-w-peach: var(--w-peach);
+  --color-w-card: var(--w-card-muted);
+  --color-w-lilac: var(--w-accent-lilac);
+  --color-w-mint: var(--w-accent-mint);
+  --color-w-teal: var(--w-accent-teal);
+  --color-bg: var(--bg);
+  --color-bg-deep: var(--bg-deep);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-surface: var(--surface);
+  --color-line: var(--line);
+  --color-success: var(--success);
+  --font-sans: var(--font-body);
+  --font-display: var(--font-display);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    overscroll-behavior-y: none;
+  }
+}
+
+body {
+  background:
+    radial-gradient(ellipse 80% 50% at 10% -10%, rgba(244, 114, 182, 0.22), transparent 50%),
+    radial-gradient(ellipse 60% 40% at 100% 0%, rgba(251, 113, 133, 0.16), transparent 45%),
+    var(--w-bg);
+  color: var(--w-ink);
+  font-family: var(--font-body), "Plus Jakarta Sans", system-ui, sans-serif;
+  overflow-x: hidden;
+  letter-spacing: -0.01em;
+}
+
+.dark body {
+  background:
+    radial-gradient(ellipse 70% 45% at 15% -5%, rgba(236, 72, 153, 0.35), transparent 50%),
+    radial-gradient(ellipse 55% 40% at 95% 5%, rgba(251, 113, 133, 0.22), transparent 45%),
+    var(--w-bg);
+}
+
+.font-display {
+  font-family: var(--font-display), Syne, system-ui, sans-serif;
+  letter-spacing: -0.03em;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display), Syne, system-ui, sans-serif;
+  letter-spacing: -0.03em;
+}
+
+.glass {
+  background: var(--w-glass);
+  border: 1px solid var(--w-glass-border);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.hero-overlay {
+  background:
+    linear-gradient(
+      105deg,
+      rgba(157, 23, 77, 0.55) 0%,
+      rgba(236, 72, 153, 0.28) 42%,
+      rgba(251, 113, 133, 0.18) 100%
+    ),
+    linear-gradient(180deg, rgba(74, 18, 66, 0.3) 0%, transparent 40%, rgba(157, 23, 77, 0.4) 100%);
+}
+
+.dark .hero-overlay {
+  background:
+    linear-gradient(
+      105deg,
+      rgba(74, 14, 46, 0.75) 0%,
+      rgba(190, 24, 93, 0.4) 45%,
+      rgba(251, 113, 133, 0.22) 100%
+    ),
+    linear-gradient(180deg, rgba(26, 8, 20, 0.45) 0%, transparent 40%, rgba(74, 14, 46, 0.55) 100%);
+}
+
+/* Soft pink CTA pill used across landing */
+.btn-pink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, var(--w-pink-bright), var(--w-pink-deep));
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.875rem;
+  padding: 0.5rem 0.5rem 0.5rem 1.5rem;
+  box-shadow: 0 16px 40px -12px rgba(236, 72, 153, 0.55);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-pink:hover {
+  transform: scale(1.03);
+  box-shadow: 0 20px 48px -10px rgba(236, 72, 153, 0.65);
+}
+
+.btn-pink-dot {
+  display: flex;
+  height: 2.5rem;
+  width: 2.5rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  background: #fff;
+  color: var(--w-pink-deep);
+}
+
+@keyframes hire-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.hire-badge {
+  animation: hire-spin 14s linear infinite;
+}
+
+@keyframes marquee-left {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes marquee-right {
+  from {
+    transform: translate3d(-50%, 0, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.marquee-row {
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 6%,
+    #000 94%,
+    transparent
+  );
+}
+
+.marquee-track-left {
+  animation: marquee-left 42s linear infinite;
+}
+
+.marquee-track-right {
+  animation: marquee-right 42s linear infinite;
+}
+
+.marquee-row:hover .marquee-track-left,
+.marquee-row:hover .marquee-track-right {
+  animation-play-state: paused;
+}
+
+/* Admin shell — black / white, independent of the landing palette */
+.dash {
+  --dash-bg: #f4f4f5;
+  --dash-surface: #ffffff;
+  --dash-ink: #111111;
+  --dash-muted: #6b6b6b;
+  --dash-line: #e6e6e6;
+  --dash-hover: #f0f0f0;
+  --dash-sidebar: #ffffff;
+  --w-bg: #f4f4f5;
+  --w-surface: #ffffff;
+  --w-ink: #111111;
+  --w-muted: #6b6b6b;
+  --w-line: #e6e6e6;
+  --w-dark: #111111;
+  --w-dark-soft: #262626;
+  --w-card-muted: #f4f4f5;
+  --bg: var(--dash-bg);
+  --ink: var(--dash-ink);
+  --muted: var(--dash-muted);
+  --surface: var(--dash-surface);
+  --line: var(--dash-line);
+  background: var(--dash-bg);
+  color: var(--dash-ink);
+  color-scheme: light;
+}
+
+html.dark .dash {
+  --dash-bg: #090909;
+  --dash-surface: #141414;
+  --dash-ink: #f5f5f5;
+  --dash-muted: #a3a3a3;
+  --dash-line: #2a2a2a;
+  --dash-hover: #1c1c1c;
+  --dash-sidebar: #090909;
+  --w-bg: #090909;
+  --w-surface: #141414;
+  --w-ink: #f5f5f5;
+  --w-muted: #a3a3a3;
+  --w-line: #2a2a2a;
+  --w-dark: #f5f5f5;
+  --w-dark-soft: #d4d4d4;
+  --w-card-muted: #1a1a1a;
+  --bg: var(--dash-bg);
+  --ink: var(--dash-ink);
+  --muted: var(--dash-muted);
+  --surface: var(--dash-surface);
+  --line: var(--dash-line);
+  background: var(--dash-bg);
+  color: var(--dash-ink);
+  color-scheme: dark;
+}
+
+.dash input,
+.dash textarea,
+.dash select {
+  border-radius: 0.5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hire-badge {
+    animation: none;
+  }
+
+  .marquee-track-left,
+  .marquee-track-right {
+    animation: none;
+    transform: none;
+  }
+}
