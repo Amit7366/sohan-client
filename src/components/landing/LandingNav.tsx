@@ -63,10 +63,10 @@ export function LandingNav({
           : "bg-transparent py-5"
       }`}
     >
-      <div className="mx-auto grid max-w-7xl grid-cols-[1fr_auto] items-center gap-4 px-5 md:grid-cols-[1fr_auto_1fr] md:px-8 lg:px-10">
+      <div className="mx-auto grid max-w-7xl grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-2 px-4 sm:gap-3 sm:px-5 md:px-8 lg:grid-cols-[1fr_auto_1fr] lg:px-10">
         <NavLink
           href={pathname === "/" ? "#home" : "/"}
-          className={`flex items-center gap-2.5 ${ink}`}
+          className={`flex min-w-0 items-center gap-2 justify-self-start ${ink}`}
         >
           {logoUrl ? (
             // eslint-disable-next-line @next/next/no-img-element
@@ -80,22 +80,32 @@ export function LandingNav({
               </span>
             </span>
           )}
-          <span className="text-[17px] font-semibold tracking-tight">{brandName}</span>
+          <span className="truncate text-[15px] font-semibold tracking-tight sm:text-[17px]">
+            {brandName}
+          </span>
         </NavLink>
 
-        <nav className={`hidden items-center justify-center gap-7 text-[14px] font-medium ${muted} lg:flex`}>
-          {nav.map((item, i) => (
-            <NavLink
-              key={`${item.href}-${item.label}`}
-              href={resolveHref(item.href)}
-              className={`transition hover:text-w-pink ${
-                i === 0 && pathname === "/" ? "text-w-pink" : ""
-              }`}
-            >
-              {item.label}
-            </NavLink>
-          ))}
-        </nav>
+        <div className="flex justify-center">
+          <NavLink
+            href={contactHref || "/contact"}
+            className="inline-flex whitespace-nowrap rounded-full bg-w-pink px-3.5 py-2 text-xs font-semibold text-white shadow-md shadow-pink-500/25 transition hover:brightness-110 sm:px-5 sm:py-2.5 sm:text-sm lg:hidden"
+          >
+            {contactLabel}
+          </NavLink>
+          <nav className={`hidden items-center justify-center gap-7 text-[14px] font-medium ${muted} lg:flex`}>
+            {nav.map((item, i) => (
+              <NavLink
+                key={`${item.href}-${item.label}`}
+                href={resolveHref(item.href)}
+                className={`transition hover:text-w-pink ${
+                  i === 0 && pathname === "/" ? "text-w-pink" : ""
+                }`}
+              >
+                {item.label}
+              </NavLink>
+            ))}
+          </nav>
+        </div>
 
         <div className="flex items-center justify-end gap-2 sm:gap-3">
           <button
@@ -113,14 +123,14 @@ export function LandingNav({
 
           <NavLink
             href={contactHref || "/contact"}
-            className="hidden rounded-full bg-w-pink px-5 py-2.5 text-sm font-semibold text-white shadow-md shadow-pink-500/25 transition hover:brightness-110 sm:inline-flex"
+            className="hidden rounded-full bg-w-pink px-5 py-2.5 text-sm font-semibold text-white shadow-md shadow-pink-500/25 transition hover:brightness-110 lg:inline-flex"
           >
             {contactLabel}
           </NavLink>
           {user ? (
             <Link
               href="/dashboard"
-              className={`hidden rounded-full px-5 py-2.5 text-sm font-semibold sm:inline-flex ${
+              className={`hidden rounded-full px-5 py-2.5 text-sm font-semibold lg:inline-flex ${
                 onDark
                   ? "border border-white/40 text-white"
                   : "border border-w-line text-w-ink"
@@ -158,13 +168,6 @@ export function LandingNav({
                 {item.label}
               </NavLink>
             ))}
-            <NavLink
-              href={contactHref || "/contact"}
-              onClick={() => setOpen(false)}
-              className="mt-2 rounded-full bg-w-pink px-4 py-2.5 text-center text-sm font-semibold text-white"
-            >
-              {contactLabel}
-            </NavLink>
             {user ? (
               <Link
                 href="/dashboard"
